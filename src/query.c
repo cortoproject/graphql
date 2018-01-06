@@ -6,7 +6,7 @@ int visit_document(
     const struct GraphQLAstDocument *document,
     void *user_data)
 {
-    printf("visit_Document\n");
+    corto_log_push("document");
     return 1;
 }
 
@@ -15,7 +15,7 @@ void end_visit_document(
     const struct GraphQLAstDocument *document,
     void *user_data)
 {
-    printf("end_visit_Document\n");
+    corto_log_pop();
 }
 
 static
@@ -23,7 +23,7 @@ int visit_operation_definition(
     const struct GraphQLAstOperationDefinition *operation_definition,
     void *user_data)
 {
-    printf("visit_OperationDefinition\n");
+    corto_log_push("operation_definition");
     return 1;
 }
 
@@ -32,7 +32,7 @@ void end_visit_operation_definition(
     const struct GraphQLAstOperationDefinition *operation_definition,
     void *user_data)
 {
-    printf("end_visit_OperationDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -40,7 +40,7 @@ int visit_variable_definition(
     const struct GraphQLAstVariableDefinition *variable_definition,
     void *user_data)
 {
-    printf("visit_VariableDefinition\n");
+    corto_log_push("variable_definition");
     return 1;
 }
 
@@ -49,7 +49,7 @@ void end_visit_variable_definition(
     const struct GraphQLAstVariableDefinition *variable_definition,
     void *user_data)
 {
-    printf("end_visit_VariableDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -57,7 +57,7 @@ int visit_selection_set(
     const struct GraphQLAstSelectionSet *selection_set,
     void *user_data)
 {
-    printf("visit_SelectionSet\n");
+    corto_log_push("selection_set");
     return 1;
 }
 
@@ -66,7 +66,7 @@ void end_visit_selection_set(
     const struct GraphQLAstSelectionSet *selection_set,
     void *user_data)
 {
-    printf("end_visit_SelectionSet\n");
+    corto_log_pop();
 }
 
 static
@@ -74,7 +74,7 @@ int visit_field(
     const struct GraphQLAstField *field,
     void *user_data)
 {
-    printf("visit_Field\n");
+    corto_log_push("field");
     return 1;
 }
 
@@ -83,7 +83,7 @@ void end_visit_field(
     const struct GraphQLAstField *field,
     void *user_data)
 {
-    printf("end_visit_Field\n");
+    corto_log_pop();
 }
 
 static
@@ -91,7 +91,7 @@ int visit_argument(
     const struct GraphQLAstArgument *argument,
     void *user_data)
 {
-    printf("visit_Argument\n");
+    corto_log_push("argument");
     return 1;
 }
 
@@ -100,7 +100,7 @@ void end_visit_argument(
     const struct GraphQLAstArgument *argument,
     void *user_data)
 {
-    printf("end_visit_Argument\n");
+    corto_log_pop();
 }
 
 static
@@ -108,7 +108,7 @@ int visit_fragment_spread(
     const struct GraphQLAstFragmentSpread *fragment_spread,
     void *user_data)
 {
-    printf("visit_FragmentSpread\n");
+    corto_log_push("fragment_spread");
     return 1;
 }
 
@@ -117,7 +117,7 @@ void end_visit_fragment_spread(
     const struct GraphQLAstFragmentSpread *fragment_spread,
     void *user_data)
 {
-    printf("end_visit_FragmentSpread\n");
+    corto_log_pop();
 }
 
 static
@@ -125,7 +125,7 @@ int visit_inline_fragment(
     const struct GraphQLAstInlineFragment *inline_fragment,
     void *user_data)
 {
-    printf("visit_InlineFragment\n");
+    corto_log_push("inline_fragment");
     return 1;
 }
 
@@ -134,7 +134,7 @@ void end_visit_inline_fragment(
     const struct GraphQLAstInlineFragment *inline_fragment,
     void *user_data)
 {
-    printf("end_visit_InlineFragment\n");
+    corto_log_pop();
 }
 
 static
@@ -142,7 +142,7 @@ int visit_fragment_definition(
     const struct GraphQLAstFragmentDefinition *fragment_definition,
     void *user_data)
 {
-    printf("visit_FragmentDefinition\n");
+    corto_log_push("fragment_definition");
     return 1;
 }
 
@@ -151,7 +151,7 @@ void end_visit_fragment_definition(
     const struct GraphQLAstFragmentDefinition *fragment_definition,
     void *user_data)
 {
-    printf("end_visit_FragmentDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -159,7 +159,7 @@ int visit_variable(
     const struct GraphQLAstVariable *variable,
     void *user_data)
 {
-    printf("visit_Variable\n");
+    corto_log_push("variable");
     return 1;
 }
 
@@ -168,7 +168,7 @@ void end_visit_variable(
     const struct GraphQLAstVariable *variable,
     void *user_data)
 {
-    printf("end_visit_Variable\n");
+    corto_log_pop();
 }
 
 static
@@ -176,7 +176,7 @@ int visit_int_value(
     const struct GraphQLAstIntValue *int_value,
     void *user_data)
 {
-    printf("visit_IntValue\n");
+    corto_log_push("int_value");
     return 1;
 }
 
@@ -185,7 +185,7 @@ void end_visit_int_value(
     const struct GraphQLAstIntValue *int_value,
     void *user_data)
 {
-    printf("end_visit_IntValue\n");
+    corto_log_pop();
 }
 
 static
@@ -193,7 +193,7 @@ int visit_float_value(
     const struct GraphQLAstFloatValue *float_value,
     void *user_data)
 {
-    printf("visit_FloatValue\n");
+    corto_log_push("float_value");
     return 1;
 }
 
@@ -202,7 +202,7 @@ void end_visit_float_value(
     const struct GraphQLAstFloatValue *float_value,
     void *user_data)
 {
-    printf("end_visit_FloatValue\n");
+    corto_log_pop();
 }
 
 static
@@ -210,7 +210,7 @@ int visit_string_value(
     const struct GraphQLAstStringValue *string_value,
     void *user_data)
 {
-    printf("visit_StringValue\n");
+    corto_log_push("string_value");
     return 1;
 }
 
@@ -219,7 +219,7 @@ void end_visit_string_value(
     const struct GraphQLAstStringValue *string_value,
     void *user_data)
 {
-    printf("end_visit_StringValue\n");
+    corto_log_pop();
 }
 
 static
@@ -227,7 +227,7 @@ int visit_boolean_value(
     const struct GraphQLAstBooleanValue *boolean_value,
     void *user_data)
 {
-    printf("visit_BooleanValue\n");
+    corto_log_push("boolean_value");
     return 1;
 }
 
@@ -236,7 +236,7 @@ void end_visit_boolean_value(
     const struct GraphQLAstBooleanValue *boolean_value,
     void *user_data)
 {
-    printf("end_visit_BooleanValue\n");
+    corto_log_pop();
 }
 
 static
@@ -244,7 +244,7 @@ int visit_null_value(
     const struct GraphQLAstNullValue *null_value,
     void *user_data)
 {
-    printf("visit_NullValue\n");
+    corto_log_push("null_value");
     return 1;
 }
 
@@ -253,7 +253,7 @@ void end_visit_null_value(
     const struct GraphQLAstNullValue *null_value,
     void *user_data)
 {
-    printf("end_visit_NullValue\n");
+    corto_log_pop();
 }
 
 static
@@ -261,7 +261,7 @@ int visit_enum_value(
     const struct GraphQLAstEnumValue *enum_value,
     void *user_data)
 {
-    printf("visit_EnumValue\n");
+    corto_log_push("enum_value");
     return 1;
 }
 
@@ -270,7 +270,7 @@ void end_visit_enum_value(
     const struct GraphQLAstEnumValue *enum_value,
     void *user_data)
 {
-    printf("end_visit_EnumValue\n");
+    corto_log_pop();
 }
 
 static
@@ -278,7 +278,7 @@ int visit_list_value(
     const struct GraphQLAstListValue *list_value,
     void *user_data)
 {
-    printf("visit_ListValue\n");
+    corto_log_push("list_value");
     return 1;
 }
 
@@ -287,7 +287,7 @@ void end_visit_list_value(
     const struct GraphQLAstListValue *list_value,
     void *user_data)
 {
-    printf("end_visit_ListValue\n");
+    corto_log_pop();
 }
 
 static
@@ -295,7 +295,7 @@ int visit_object_value(
     const struct GraphQLAstObjectValue *object_value,
     void *user_data)
 {
-    printf("visit_ObjectValue\n");
+    corto_log_push("object_value");
     return 1;
 }
 
@@ -304,7 +304,7 @@ void end_visit_object_value(
     const struct GraphQLAstObjectValue *object_value,
     void *user_data)
 {
-    printf("end_visit_ObjectValue\n");
+    corto_log_pop();
 }
 
 static
@@ -312,7 +312,7 @@ int visit_object_field(
     const struct GraphQLAstObjectField *object_field,
     void *user_data)
 {
-    printf("visit_ObjectField\n");
+    corto_log_push("object_field");
     return 1;
 }
 
@@ -321,7 +321,7 @@ void end_visit_object_field(
     const struct GraphQLAstObjectField *object_field,
     void *user_data)
 {
-    printf("end_visit_ObjectField\n");
+    corto_log_pop();
 }
 
 static
@@ -329,7 +329,7 @@ int visit_directive(
     const struct GraphQLAstDirective *directive,
     void *user_data)
 {
-    printf("visit_Directive\n");
+    corto_log_push("directive");
     return 1;
 }
 
@@ -338,7 +338,7 @@ void end_visit_directive(
     const struct GraphQLAstDirective *directive,
     void *user_data)
 {
-    printf("end_visit_Directive\n");
+    corto_log_pop();
 }
 
 static
@@ -346,7 +346,7 @@ int visit_named_type(
     const struct GraphQLAstNamedType *named_type,
     void *user_data)
 {
-    printf("visit_NamedType\n");
+    corto_log_push("named_type");
     return 1;
 }
 
@@ -355,7 +355,7 @@ void end_visit_named_type(
     const struct GraphQLAstNamedType *named_type,
     void *user_data)
 {
-    printf("end_visit_NamedType\n");
+    corto_log_pop();
 }
 
 static
@@ -363,7 +363,7 @@ int visit_list_type(
     const struct GraphQLAstListType *list_type,
     void *user_data)
 {
-    printf("visit_ListType\n");
+    corto_log_push("list_type");
     return 1;
 }
 
@@ -372,7 +372,7 @@ void end_visit_list_type(
     const struct GraphQLAstListType *list_type,
     void *user_data)
 {
-    printf("end_visit_ListType\n");
+    corto_log_pop();
 }
 
 static
@@ -380,7 +380,7 @@ int visit_non_null_type(
     const struct GraphQLAstNonNullType *non_null_type,
     void *user_data)
 {
-    printf("visit_NonNullType\n");
+    corto_log_push("non_null_type");
     return 1;
 }
 
@@ -389,7 +389,7 @@ void end_visit_non_null_type(
     const struct GraphQLAstNonNullType *non_null_type,
     void *user_data)
 {
-    printf("end_visit_NonNullType\n");
+    corto_log_pop();
 }
 
 static
@@ -397,7 +397,7 @@ int visit_name(
     const struct GraphQLAstName *name,
     void *user_data)
 {
-    printf("visit_Name\n");
+    corto_log_push("name");
     return 1;
 }
 
@@ -406,7 +406,7 @@ void end_visit_name(
     const struct GraphQLAstName *name,
     void *user_data)
 {
-    printf("end_visit_Name\n");
+    corto_log_pop();
 }
 
 static
@@ -414,7 +414,7 @@ int visit_schema_definition(
     const struct GraphQLAstSchemaDefinition *schema_definition,
     void *user_data)
 {
-    printf("visit_SchemaDefinition\n");
+    corto_log_push("schema_definition");
     return 1;
 }
 
@@ -423,7 +423,7 @@ void end_visit_schema_definition(
     const struct GraphQLAstSchemaDefinition *schema_definition,
     void *user_data)
 {
-    printf("end_visit_SchemaDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -431,7 +431,7 @@ int visit_operation_type_definition(
     const struct GraphQLAstOperationTypeDefinition *operation_type_definition,
     void *user_data)
 {
-    printf("visit_OperationTypeDefinition\n");
+    corto_log_push("operation_type_definition");
     return 1;
 }
 
@@ -440,7 +440,7 @@ void end_visit_operation_type_definition(
     const struct GraphQLAstOperationTypeDefinition *operation_type_definition,
     void *user_data)
 {
-    printf("end_visit_OperationTypeDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -448,7 +448,7 @@ int visit_scalar_type_definition(
     const struct GraphQLAstScalarTypeDefinition *scalar_type_definition,
     void *user_data)
 {
-    printf("visit_ScalarTypeDefinition\n");
+    corto_log_push("scalar_type_definition");
     return 1;
 }
 
@@ -457,7 +457,7 @@ void end_visit_scalar_type_definition(
     const struct GraphQLAstScalarTypeDefinition *scalar_type_definition,
     void *user_data)
 {
-    printf("end_visit_ScalarTypeDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -465,7 +465,7 @@ int visit_object_type_definition(
     const struct GraphQLAstObjectTypeDefinition *object_type_definition,
     void *user_data)
 {
-    printf("visit_ObjectTypeDefinition\n");
+    corto_log_push("object_type_definition");
     return 1;
 }
 
@@ -474,7 +474,7 @@ void end_visit_object_type_definition(
     const struct GraphQLAstObjectTypeDefinition *object_type_definition,
     void *user_data)
 {
-    printf("end_visit_ObjectTypeDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -482,7 +482,7 @@ int visit_field_definition(
     const struct GraphQLAstFieldDefinition *field_definition,
     void *user_data)
 {
-    printf("visit_FieldDefinition\n");
+    corto_log_push("field_definition");
     return 1;
 }
 
@@ -491,7 +491,7 @@ void end_visit_field_definition(
     const struct GraphQLAstFieldDefinition *field_definition,
     void *user_data)
 {
-    printf("end_visit_FieldDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -499,7 +499,7 @@ int visit_input_value_definition(
     const struct GraphQLAstInputValueDefinition *input_value_definition,
     void *user_data)
 {
-    printf("visit_InputValueDefinition\n");
+    corto_log_push("input_value_definition");
     return 1;
 }
 
@@ -508,7 +508,7 @@ void end_visit_input_value_definition(
     const struct GraphQLAstInputValueDefinition *input_value_definition,
     void *user_data)
 {
-    printf("end_visit_InputValueDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -516,7 +516,7 @@ int visit_interface_type_definition(
     const struct GraphQLAstInterfaceTypeDefinition *interface_type_definition,
     void *user_data)
 {
-    printf("visit_InterfaceTypeDefinition\n");
+    corto_log_push("interface_type_definition");
     return 1;
 }
 
@@ -525,7 +525,7 @@ void end_visit_interface_type_definition(
     const struct GraphQLAstInterfaceTypeDefinition *interface_type_definition,
     void *user_data)
 {
-    printf("end_visit_InterfaceTypeDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -533,7 +533,7 @@ int visit_union_type_definition(
     const struct GraphQLAstUnionTypeDefinition *union_type_definition,
     void *user_data)
 {
-    printf("visit_UnionTypeDefinition\n");
+    corto_log_push("union_type_definition");
     return 1;
 }
 
@@ -542,7 +542,7 @@ void end_visit_union_type_definition(
     const struct GraphQLAstUnionTypeDefinition *union_type_definition,
     void *user_data)
 {
-    printf("end_visit_UnionTypeDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -550,7 +550,7 @@ int visit_enum_type_definition(
     const struct GraphQLAstEnumTypeDefinition *enum_type_definition,
     void *user_data)
 {
-    printf("visit_EnumTypeDefinition\n");
+    corto_log_push("enum_type_definition");
     return 1;
 }
 
@@ -559,7 +559,7 @@ void end_visit_enum_type_definition(
     const struct GraphQLAstEnumTypeDefinition *enum_type_definition,
     void *user_data)
 {
-    printf("end_visit_EnumTypeDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -567,7 +567,7 @@ int visit_enum_value_definition(
     const struct GraphQLAstEnumValueDefinition *enum_value_definition,
     void *user_data)
 {
-    printf("visit_EnumValueDefinition\n");
+    corto_log_push("enum_value_definition");
     return 1;
 }
 
@@ -576,7 +576,7 @@ void end_visit_enum_value_definition(
     const struct GraphQLAstEnumValueDefinition *enum_value_definition,
     void *user_data)
 {
-    printf("end_visit_EnumValueDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -584,7 +584,7 @@ int visit_input_object_type_definition(
     const struct GraphQLAstInputObjectTypeDefinition *input_object_type_definition,
     void *user_data)
 {
-    printf("visit_InputObjectTypeDefinition\n");
+    corto_log_push("input_object_type_definition");
     return 1;
 }
 
@@ -593,7 +593,7 @@ void end_visit_input_object_type_definition(
     const struct GraphQLAstInputObjectTypeDefinition *input_object_type_definition,
     void *user_data)
 {
-    printf("end_visit_InputObjectTypeDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -601,7 +601,7 @@ int visit_type_extension_definition(
     const struct GraphQLAstTypeExtensionDefinition *type_extension_definition,
     void *user_data)
 {
-    printf("visit_TypeExtensionDefinition\n");
+    corto_log_push("type_extension_definition");
     return 1;
 }
 
@@ -610,7 +610,7 @@ void end_visit_type_extension_definition(
     const struct GraphQLAstTypeExtensionDefinition *type_extension_definition,
     void *user_data)
 {
-    printf("end_visit_TypeExtensionDefinition\n");
+    corto_log_pop();
 }
 
 static
@@ -618,7 +618,7 @@ int visit_directive_definition(
     const struct GraphQLAstDirectiveDefinition *directive_definition,
     void *user_data)
 {
-    printf("visit_DirectiveDefinition\n");
+    corto_log_push("directive_definition");
     return 1;
 }
 
@@ -627,7 +627,7 @@ void end_visit_directive_definition(
     const struct GraphQLAstDirectiveDefinition *directive_definition,
     void *user_data)
 {
-    printf("end_visit_DirectiveDefinition\n");
+    corto_log_pop();
 }
 
 struct GraphQLAstVisitorCallbacks visitall_cb = {
@@ -706,7 +706,6 @@ struct GraphQLAstVisitorCallbacks visitall_cb = {
     .visit_directive_definition = visit_directive_definition,
     .end_visit_directive_definition = end_visit_directive_definition
 };
-
 
 int16_t graphql_query(
     const char *query)
