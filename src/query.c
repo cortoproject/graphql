@@ -177,6 +177,7 @@ int visit_int_value(
     void *user_data)
 {
     corto_log_push("int_value");
+    corto_info("%s", GraphQLAstIntValue_get_value(int_value));
     return 1;
 }
 
@@ -194,6 +195,7 @@ int visit_float_value(
     void *user_data)
 {
     corto_log_push("float_value");
+    corto_info("%s", GraphQLAstFloatValue_get_value(float_value));
     return 1;
 }
 
@@ -211,6 +213,7 @@ int visit_string_value(
     void *user_data)
 {
     corto_log_push("string_value");
+    corto_info("\"%s\"", GraphQLAstStringValue_get_value(string_value));
     return 1;
 }
 
@@ -228,6 +231,7 @@ int visit_boolean_value(
     void *user_data)
 {
     corto_log_push("boolean_value");
+    corto_info("%s", GraphQLAstBooleanValue_get_value(boolean_value) ? "true" : "false");
     return 1;
 }
 
@@ -245,6 +249,7 @@ int visit_null_value(
     void *user_data)
 {
     corto_log_push("null_value");
+    corto_info("null");
     return 1;
 }
 
@@ -262,6 +267,7 @@ int visit_enum_value(
     void *user_data)
 {
     corto_log_push("enum_value");
+    corto_info("%s", GraphQLAstEnumValue_get_value(enum_value));
     return 1;
 }
 
@@ -398,6 +404,7 @@ int visit_name(
     void *user_data)
 {
     corto_log_push("name");
+    corto_info("%s", GraphQLAstName_get_value(name));
     return 1;
 }
 
