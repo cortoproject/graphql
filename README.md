@@ -25,7 +25,7 @@ tableinstance data/Car: type=Car :/
 Example GraphQL query:
 ```graphql
 {
-  root(id: "data/Car/04-C-1672") {
+  car(id: "data/Car/04-C-1672") {
     _id
     _parent
     speed
@@ -38,7 +38,7 @@ Result:
 ```json
 {
     "data": {
-        "root": {
+        "car": {
             "_id": "04-C-1672",
             "_parent": ".",
             "speed": 55.2,
@@ -52,7 +52,7 @@ Result:
 Example GraphQL query:
 ```graphql
 {
-  root(id: "data/Car/04-C-1672") {
+  car(id: "data/Car/04-C-1672") {
     _id
     _parent
     speed
@@ -68,7 +68,7 @@ Result:
 ```json
 {
     "data": {
-        "root": {
+        "car": {
             "_id": "04-C-1672",
             "_parent": ".",
             "speed": 55.2,
@@ -85,7 +85,7 @@ Result:
 Example GraphQL query:
 ```graphql
 {
-  root(select: "*", from: "data/Car") {
+  cars(select: "*", from: "data/Car") {
     _id
     _parent
     speed
@@ -100,7 +100,7 @@ Result:
 ```json
 {
     "data": {
-        "root": [
+        "cars": [
             {
                 "_id": "04-C-1672",
                 "_parent": ".",
