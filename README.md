@@ -25,7 +25,7 @@ tableinstance data/Car: type=Car :/
 Example GraphQL query:
 ```graphql
 {
-  root(id: "data/Car/04-C-1672) {
+  root(id: "data/Car/04-C-1672") {
     _id
     _parent
     speed
@@ -48,7 +48,40 @@ Result:
 }
 ```
 
-### Request multiple objects with nested object query
+### Request single object with nested object
+Example GraphQL query:
+```graphql
+{
+  root(id: "data/Car/04-C-1672") {
+    _id
+    _parent
+    speed
+    color
+    Engine {
+      rpm
+    }
+  }
+}
+```
+
+Result:
+```json
+{
+    "data": {
+        "root": {
+            "_id": "04-C-1672",
+            "_parent": ".",
+            "speed": 55.2,
+            "color": "Red"
+            "Engine": {
+                "rpm": 4000
+            }            
+        }  
+    }
+}
+```
+
+### Request multiple objects with nested object
 Example GraphQL query:
 ```graphql
 {
