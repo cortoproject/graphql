@@ -41,6 +41,7 @@ Result:
 For corto model:
 ```
 enum Color:/ Red, Blue
+
 table Car:/
     speed: float32
     color: /Color
