@@ -230,15 +230,22 @@ int16_t graphql_eval_fields(
                 char *value = NULL;
 
                 /* Meta member */
-                if (!strcmp(f->name, "_id")) {
-                    value = r->id;
-                } else if (!strcmp(f->name, "_parent")) {
-                    value = r->parent;
-                } else if (!strcmp(f->name, "_type")) {
-                    value = r->type;
-                }
+                if (r) {
+                    if (!strcmp(f->name, "_id")) {
+                        value = r->id;
+                    } else if (!strcmp(f->name, "_parent")) {
+                        value = r->parent;
+                    } else if (!strcmp(f->name, "_type")) {
+                        value = r->type;
+                    }
 
-                corto_buffer_append(result, "\"%s\":\"%s\"", f->name, value);
+                    corto_buffer_append(result, "\"%s\":\"%s\"", f->name, value);
+                } else {
+                    corto_throw(
+                        "cannot get '%s' from value that is not an object",
+                        f->name);
+                    goto error;
+                }
 
             } else if (islower(f->name[0])) {
                 /* Find member in type */
@@ -249,23 +256,38 @@ int16_t graphql_eval_fields(
                     goto error;
                 }
 
-                /* Cast value in pointer to string */
-                char *str = NULL;
-                if (corto_ptr_cast(m->type, ptr, corto_string_o, &str)) {
-                    corto_throw("cast from '%s' to string failed for member '%s'",
-                        corto_fullpath(NULL, m->type),
-                        corto_fullpath(NULL, m));
-                    goto error;
+                /* Is this field a scalar or a selection */
+                if (corto_ll_count(f->fields)) {
+                    corto_buffer_append(result, "\"%s\":", f->name);
+
+                    /* If type is composite, select members */
+                    if (m->type->kind == CORTO_COMPOSITE) {
+                        graphql_eval_fields(
+                            f,
+                            NULL,
+                            m->type,
+                            CORTO_OFFSET(ptr, m->offset),
+                            result);
+                    }
+                } else {
+                    /* Cast value in pointer to string */
+                    char *str = NULL;
+                    if (corto_ptr_cast(m->type, ptr, corto_string_o, &str)) {
+                        corto_throw("cast from '%s' to string failed for member '%s'",
+                            corto_fullpath(NULL, m->type),
+                            corto_fullpath(NULL, m));
+                        goto error;
+                    }
+
+                    /* Append member to JSON */
+                    corto_buffer_append(result, "\"%s\":%s", corto_idof(m), str);
+
+                    /* Free resources */
+                    if (str) free(str);
                 }
 
-                /* Append member to JSON */
-                corto_buffer_append(result, "\"%s\":%s", corto_idof(m), str);
-
-                /* Free resources */
-                if (str) free(str);
-
             } else if (isupper(f->name[0])) {
-                /* Resolve nested object */
+                corto_buffer_append(result, "\"%s\":{}", f->name);
             }
         }
         corto_buffer_appendstr(result, "}");
@@ -294,10 +316,14 @@ int16_t graphql_eval_toplevelField(
     }
 
     corto_buffer_append(result, "{\"%s\":[", ((graphql_field)field)->name);
-
+    int count = 0;
     while (corto_iter_hasNext(&it)) {
         corto_result *r = corto_iter_next(&it);
         corto_type t = corto_resolve(NULL, r->type);
+        if (count) {
+            corto_buffer_appendstr(result, ",");
+        }
+        count++;
         if (graphql_eval_fields((graphql_field)field, r, t, (void*)r->value, result)) {
             goto error;
         }
