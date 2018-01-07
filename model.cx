@@ -1,0 +1,29 @@
+in package graphql
+
+enum value_kind:/
+    None: 0
+    Boolean: 1
+    Int: 2
+    Float: 3
+    String: 4
+
+union value: discriminator=value_kind :/
+    m_bool: {1}, bool
+    m_int: {2}, string
+    m_float: {3}, string
+    m_string: {4}, string
+    default m_none: string
+
+class argument:/
+    name: string
+    value: graphql/value
+
+class field:/
+    name: string
+    arguments: list{argument}
+    fields: list{field}
+
+class query:/
+    fields: list{field}
+
+query compile(string query)

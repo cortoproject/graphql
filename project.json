@@ -1,12 +1,12 @@
 {
-    "id": "graphql/query",
+    "id": "graphql",
     "type": "package",
     "value": {
         "description": "Run GraphQL queries on corto object store",
         "author": "Sander Mertens",
         "version": "0.0.1",
         "language": "c",
-        "managed": false,
-        "use": ["corto", "graphql/parser"]
+        "managed": true,
+        "use": ["graphql/parser"]
     }
 }
