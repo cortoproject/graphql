@@ -5,7 +5,7 @@ Run GraphQL queries on corto object store
 Example GraphQL query:
 ```graphql
 {
-  data(select: "*", from: "data/Car") {
+  root(select: "*", from: "data/Car") {
     _id
     _parent
     speed
@@ -18,24 +18,30 @@ Example GraphQL query:
 ```
 Result:
 ```json
-[{
-    "_id": "04-C-1672",
-    "_parent": ".",
-    "speed": 55.2,
-    "color": "Red",
-    "Engine": {
-        "rpm": 4000
-    }
-},
 {
-    "_id": "88-B-3244",
-    "_parent": ".",
-    "speed": 23.2,
-    "color": "Blue",
-    "Engine": {
-        "rpm": 2000
+    "data": {
+        "root": [
+            {
+                "_id": "04-C-1672",
+                "_parent": ".",
+                "speed": 55.2,
+                "color": "Red",
+                "Engine": {
+                    "rpm": 4000
+                }
+            },
+            {
+                "_id": "88-B-3244",
+                "_parent": ".",
+                "speed": 23.2,
+                "color": "Blue",
+                "Engine": {
+                    "rpm": 2000
+                }
+            }
+        ]  
     }
-}]
+}
 ```
 
 For corto model:
