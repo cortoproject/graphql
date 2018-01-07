@@ -23,7 +23,12 @@ class field:/
     arguments: list{argument}
     fields: list{field}
 
+class toplevel_field: field :/
+    query: vstore/query
+
 class query:/
     fields: list{field}
 
 query compile(string query)
+
+string eval(query query)
