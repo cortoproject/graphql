@@ -1,7 +1,7 @@
 # graphql-query
 Run GraphQL queries on corto object store
 
-## Mapping to object store:
+## GraphQL mapping to corto objects
 The following GraphQL queries use the following corto model:
 ```
 enum Color:/ Red, Blue
@@ -72,7 +72,7 @@ Result:
             "_id": "04-C-1672",
             "_parent": ".",
             "speed": 55.2,
-            "color": "Red"
+            "color": "Red",
             "Engine": {
                 "rpm": 4000
             }            
